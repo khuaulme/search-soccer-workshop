@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+<h1 align="center">Atlas Search Soccer</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center">Build your Soccer Dream Team with MongoDB Atlas Search</h2>
 
-## Available Scripts
+Every four years, for the sake of blending in, I pretend to know soccer. When the World Cup is on, I’m overwhelmed by the exuberant fans with colorful soccer jerseys. Jerseys with unfamiliar names from far away places. I recognize Messi and Ronaldo, but the others …? Mkhitaryan, Szczęsny, Großkreutz? How can I look up their stats to feign familiarity when I have no idea how to spell their names?
 
-In the project directory, you can run:
+Well, now there's this app for that. <a href="https://www.atlassearchsoccer.com"><b>Atlas Search Soccer</b></a> is an interactive Atlas Search tutorial and instant sports bar credibility builder.
 
-### `npm start`
+<p align="center">
+    <img src="readmeImages/soccerDemo.gif" width="400"  />
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Teaming up MongoDB Atlas Search with an extensive player dataset, you can scout across the over 22,000 players in the database based on a variety of search parameters and data types:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- player name
+- player position
+- nationality
+- club
+- skill level
+- age
+- salary
 
-### `npm test`
+Equipped with only a search box, sliders and checkboxes, find the world's best players with the most impossible-to-spell names to build out your own Soccer Dream Team. Autocomplete, wildcard, and filters to find Ibrahimović, Błaszczykowski, and Szczęsny? No problem!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As you interact with the application, you'll see the `$search` operator in a MongoDB aggregation pipeline live in-action!
 
-### `npm run build`
+When you pick a footballer for your team, he is written to local storage on your device. That way, your Dream Team stays warmed up and on the pitch even after you close your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h4>Skills and Drills</h4>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- search operators:
+  - text
+  - wildcard
+  - autocomplete
+  - range
+- fuzzy matching
+- indexes and analyzers
+- compound operator
+- relevance based scoring
+- custom score modifiers
+- filters, facets and counts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+So give it a shot, and you'll be an Atlas Search pro in no time!
 
-### `npm run eject`
+<h4 align="center"> <span ><a href="https://www.atlassearchsoccer.com">www.atlassearchsoccer.com</a></span>  ⚽ </h4>
+<p align="center">
+    <img src="readmeImages/football-is-life-ted-lasso.gif" width="400"  />
+</p>
+<h6>Game Notes 📝</h6>
+<p>This application hosted entirely by MongoDB Atlas was created using:</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React
+- Tailwind CSS
+- Atlas App Services for backend HTTPs endpoints and webhooks
+- A [FIFA22 player dataset](https://www.kaggle.com/datasets/bryanb/fifa-player-stats-database)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
+<hr>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h4>Want to play in your own stadium? Here's how to build Atlas Search Soccer on your own free cluster.
+</h4>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Atlas Search Soccer runs on a very streamlined game plan where MongoDB Atlas is the MVP.
+**No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
-## Learn More
+<p float="left">
+    <img src="readmeImages/Architecture.png" width="750"  />
+</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h3>Prerequisites</h3>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
+- A recent version of Node.js and npm.
+- Extensive worldwide player dataset (players22.json) provided in the data folder.
+- (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
-### Code Splitting
+It is also included in this repo's data folder as <pre>players22.json</pre>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+<h6>To Run This Application....</h6>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Clone the repo.
+2. Navigate inside `atlas-search-soccer` directory.
+3. Run <code>npm install</code> .
+4. Run <code>npm start </code> .
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<h6>Prepare Data</h6>
 
-### Advanced Configuration
+Load data to Atlas cluster:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<ul>
+<li>database: <code>soccer</code></li>
+<li>collection: <code>players22</code></li>
+</ul>
 
-### Deployment
+<h2>React Components....</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  <img src="/readmeImages/Main.png" width="500" />
+  <img src="/readmeImages/SearchResults.png" width="550" /> 
+  <img src="readmeImages/Filters.png" width="550" />
 
-### `npm run build` fails to minify
+<h2>Using Atlas App Services as Your Serverless Backend....</h2>
+<p>AtlasSearchSoccer uses HTTP services in App Services to create 5 APIs to allow you to query for your player data over HTTP: </p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The data is queried from `useHomeFetch.js` in the `hooks` directory.
+Here you'll find the endpoints for the backend search queries using the `$search` operator:
+
+- `BasicSearchEndPoint`
+- `WildcardEndPoint`
+- `AutocompleteEndpoint`
+- `AdvancedSearchEndPoint`
+- `FacetsEndPoint`
+  Find the code for these webhooks in the <code>AppServices</code> folder.</p>
+
+<hr>
+
+<p>If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</p>
+
+<p>Also please join our online <a href="https://developer.mongodb.com/community/forums/">MongoDB Community</a> to interact with our product and engineering teams along with thousands of other MongoDB and Realm users. 
+<br/><br/>Have fun and happy coding!</p></h4>
+
+## Disclaimer
+
+Use at your own risk; not a supported MongoDB product
