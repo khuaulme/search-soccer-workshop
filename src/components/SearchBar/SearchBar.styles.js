@@ -13,10 +13,10 @@ export const Content = styled.div`
   max-width: var(--maxWidth);
   width: 100%;
   height: 55px;
-  background: transparent;
+  background: white;
   margin: 0 auto;
   padding: 20px, 20px, 20px, 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   color: var(--white);
   border: 2px solid white;
   box-shadow: 1px 1px 1px 1px slate;

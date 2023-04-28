@@ -16,7 +16,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, setSubmitted }) => {
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Search players..."
+            placeholder="type to find players..."
             onChange={(event) => setSearchTerm(event.target.value)}
             value={searchTerm}
           />

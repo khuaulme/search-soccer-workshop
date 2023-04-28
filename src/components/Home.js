@@ -4,24 +4,24 @@ import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const [players, setPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
-  // INSERT YOUR CREATED MOVIE ENDPOINT
-  const MOVIES_ENDPOINT = "";
+  // INSERT YOUR CREATED ENDPOINT
+  const GET_PLAYERS_ENDPOINT = "";
 
-  const fetchMovies = async (searchTerm) => {
-    console.log("HITTING FETCH MOVIES API");
+  const fetchPlayers = async (searchTerm) => {
+    console.log("HITTING FETCH PLAYERS API");
     console.log("SEARCHTERM: ", searchTerm);
 
     try {
       // BASIC SEARCH - append searchTerm as URL parameter to GET endpoint
-      const endpoint = MOVIES_ENDPOINT + "?searchTerm=" + searchTerm;
-      const returnedMovies = await (await fetch(endpoint)).json();
-      setMovies(returnedMovies);
-      console.log("MOVIES: ", returnedMovies);
+      const endpoint = GET_PLAYERS_ENDPOINT + "?searchTerm=" + searchTerm;
+      const returnedPlayers = await (await fetch(endpoint)).json();
+      setPlayers(returnedPlayers);
+      console.log("PLAYERS: ", returnedPlayers);
     } catch (error) {
       console.log(error);
     }
@@ -29,12 +29,12 @@ const Home = () => {
 
   useEffect(() => {
     if (!submitted) return;
-    if (MOVIES_ENDPOINT === "") {
+    if (GET_PLAYERS_ENDPOINT === "") {
       setShowNeedEndpointMessage(true);
       return;
     }
     setShowNeedEndpointMessage(false);
-    fetchMovies(searchTerm);
+    fetchPlayers(searchTerm);
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitted]);
@@ -45,27 +45,29 @@ const Home = () => {
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        setMovies={setMovies}
+        setPlayers={setPlayers}
         setSubmitted={setSubmitted}
       />
       <div className="container">
-        {showNeedEndpointMessage ? (
+        {/* {showNeedEndpointMessage ? (
           <div className="needEndpoint">Build Endpoint Please 🥺</div>
         ) : (
           <Grid header={searchTerm ? null : "Player Search Results"}>
-            {movies.map((movie) => (
+            {players.map((player) => (
               <Thumb
-                key={movie._id}
-                movie={movie}
+                key={player._id}
+                player={player}
                 clickable
-                movieID={movie._id}
+                playerID={player._id}
                 image={
-                  movie.poster ? movie.poster : "http://bit.ly/AtlasMoviePoster"
+                  player.player_face_url
+                    ? player.player_face_url
+                    : ""
                 }
               ></Thumb>
             ))}
           </Grid>
-        )}
+            )} */}
       </div>{" "}
     </>
   );
