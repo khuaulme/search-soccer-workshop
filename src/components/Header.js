@@ -12,7 +12,7 @@ const Header = ({ searchTerm, setSearchTerm, setPlayers, setSubmitted }) => {
   return (
     <Wrapper>
       <Title>
-        <h8>Atlas Search Soccer</h8>
+        <h4>Atlas Search Soccer</h4>
       </Title>
 
       <Content>
@@ -60,12 +60,12 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-around;
   max-width: 100%;
-  padding: 0 40px;
+  padding: 0 20px;
   margin: 0 auto;
 `;
 
 export const InputForm = styled.div`
-  width: 80%;
+  width: 70%;
 `;
 
 export const Logo = styled.img`

@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
   padding: 5px;
   position: relative;
   border-radius: 10px;
-  background-color: #48515b;
+  background-color: black;
+
   margin-bottom: 30px;
   max-height: 700px;
   overflow: auto;
@@ -18,6 +19,11 @@ export const Wrapper = styled.div`
     box-shadow: 0px 0px 200px 50px rgba(6, 22, 33, 0.7);
   }
 `;
+export const TraitLine = styled.div`
+  font-family: "Lexend Deca", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 export const Content = styled.div`
   font-family: "Lexend Deca", sans-serif;
@@ -29,21 +35,26 @@ export const Content = styled.div`
   }
   h3 {
     font-weight: 400;
-    color: white;
+    color: #0ad05b;
   }
 
   h4 {
-    font-weight: 200;
+    font-weight: 300;
+  }
+  h1 {
+    color: #7fff00;
   }
 `;
 
 export const ScoreBadge = styled.div`
   /* position: absolute; */
-  background: white;
+  background: red;
+  opacity:1.0;
   padding: 6px;
-  color: Crimson;
+  color: white;
   font-size: 30px;
-  bottom: 0px;
+  font-weight:bold;
+  top: 0px;
   right: 10px;
   border-radius: 20px;
   height: 40px;
@@ -59,12 +70,14 @@ export const ScoreBadge = styled.div`
     box-shadow: 0px 0px 200px 50px rgba(6, 22, 33, 0.7);
   }
 `;
+export const TraitImage = styled.img`
+  width: 40px;
 
+  object-fit: contain;
+`;
 export const Image = styled.img`
-  width: 100%;
-  max-width: 720px;
+  width: 100px;
   transition: all 0.3s;
-  object-fit: cover;
   border-radius: 20px;
   animation: animateThumb 0.5s;
 

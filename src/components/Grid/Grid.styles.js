@@ -14,6 +14,6 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
   grid-gap: 4rem;
 `;

@@ -39,7 +39,7 @@ header {
 }
 #box {
   border: 2px solid white;
-
+  /* color: #061621; */
   margin-left: 20px;
   margin-top: 110px;
 }
@@ -69,6 +69,7 @@ hr {
 .container {
   display: flex;
   margin: 0 auto;
+  position: relative;
 }
 
 .ACcontainer {

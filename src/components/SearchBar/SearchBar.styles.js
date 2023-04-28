@@ -38,7 +38,8 @@ export const Content = styled.div`
     width: 95%;
     background: transparent;
     height: 40px;
-    color: var(--white);
+    /* color: var(--white); */
+    color: #061621;
 
     :focus {
       outline: none;
