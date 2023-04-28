@@ -43,7 +43,7 @@ const client = new ApolloClient({
     // access token before sending the request.
     fetch: async (uri, options) => {
       const accessToken = await getValidAccessToken();
-      // console.log("ACCESS TOKEN: ", accessToken);
+
       options.headers.Authorization = `Bearer ${accessToken}`;
       return fetch(uri, options);
     },

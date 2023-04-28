@@ -15,7 +15,7 @@ const Home = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
   const { loading, data } = useQuery(FIND_PLAYER, {
-    variables: { query: { long_name: searchTerm } },
+    variables: { query: { short_name: searchTerm } },
   });
 
   // INSERT YOUR CREATED ENDPOINT
