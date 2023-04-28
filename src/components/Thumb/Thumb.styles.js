@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   position: relative;
   border-radius: 10px;
   background-color: black;
+  width: 300px;
 
   margin-bottom: 30px;
   max-height: 700px;
@@ -76,7 +77,7 @@ export const TraitImage = styled.img`
   object-fit: contain;
 `;
 export const Image = styled.img`
-  width: 100px;
+  maxwidth: 100px;
   transition: all 0.3s;
   border-radius: 20px;
   animation: animateThumb 0.5s;
