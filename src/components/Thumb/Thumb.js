@@ -10,7 +10,8 @@ import {
 } from "./Thumb.styles";
 
 const Thumb = ({ player, image }) => {
-  const score = player.score.toString().slice(0, 5);
+  // const score = player.score.toString().slice(0, 5);
+  const score = "placeholder100";
 
   return (
     <Wrapper>

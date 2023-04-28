@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { APP_ID } from "../index";
+// import whichever Apollo hooks you're using
+import { useQuery, useMutation } from "@apollo/client";
+import gql from "graphql-tag";
+import { FIND_PLAYER } from "../graphql-operations";
+
 import Header from "./Header";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
@@ -8,6 +14,9 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
+  const { loading, data } = useQuery(FIND_PLAYER, {
+    variables: { query: { long_name: searchTerm } },
+  });
 
   // INSERT YOUR CREATED ENDPOINT
   const GET_PLAYERS_ENDPOINT =
