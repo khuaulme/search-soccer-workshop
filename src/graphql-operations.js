@@ -17,10 +17,11 @@ import gql from "graphql-tag";
 //     }
 //   }
 // `;
+// {variables: { query: { short_name: searchTerm } }} PLAYERQUERYINPUT IS AN OBJECT -- this is in my query variables
 
 export const FIND_PLAYER = gql`
-  query FindPlayer($query: PlayerQueryInput!) {
-    player(query: $query) {
+  query FindPlayer($Input: String) {
+    search(input: $Input) {
       _id
       short_name
       long_name
