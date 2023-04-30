@@ -53,14 +53,13 @@ export const ScoreBadge = styled.div`
   opacity:1.0;
   padding: 6px;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   font-weight:bold;
   top: 0px;
-  right: 10px;
   border-radius: 20px;
-  height: 40px;
-  width: full;
-  align: center;
+  height: 28px;
+  width: 60%;
+  margin: 0 auto;
   border: 3px solid black;
   shadow: 
   z-index: 10;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { APP_ID } from "../index";
+
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
 import { FIND_PLAYER } from "../graphql-operations";
@@ -13,10 +13,6 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
-
-  //  const [ getPlayer, { loading, error, data }] = useLazyQuery(FIND_PLAYER, {
-  //    variables: { query: { short_name: searchTerm } },
-  //  });
 
   const [getPlayer, { loading, error, data }] = useLazyQuery(FIND_PLAYER);
 
@@ -39,9 +35,6 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submitted]);
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
   return (
     <>
       {" "}
@@ -50,13 +43,6 @@ const Home = () => {
         setSearchTerm={setSearchTerm}
         setSubmitted={setSubmitted}
       />
-      <div>
-        {data && data.search ? (
-          <h1>{data.search[0].short_name}</h1>
-        ) : (
-          "No Players Found."
-        )}
-      </div>
       <div className="container">
         <img
           src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
