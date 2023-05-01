@@ -34,14 +34,15 @@ const Home = () => {
     });
 
     console.log("PLAYERS: ", players);
-    if (players.data && players.data.search) setPlayers(players.data.search);
+    if (players.data && players.data.searchAdvanced)
+      setPlayers(players.data.searchAdvanced);
   };
 
   useEffect(() => {
     if (!submitted) return;
 
     console.log("SUBMITTED");
-    performSearchQuery(searchTerm);
+    performSearchQuery(searchTerm, functionScore, operator);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
