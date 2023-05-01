@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
-import { FIND_PLAYER } from "../graphql-operations";
+import { FIND_PLAYER, FIND_PLAYER_ADVANCED } from "../graphql-operations";
 
 import Header from "./Header";
 import Grid from "./Grid/Grid";
@@ -16,11 +16,21 @@ const Home = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
-  const [getPlayer, { loading, error, data }] = useLazyQuery(FIND_PLAYER);
+  //  const [getPlayer, { loading, error, data }] = useLazyQuery(FIND_PLAYER);
 
-  const performSearchQuery = async (searchTerm) => {
+  const [getPlayer, { loading, error, data }] =
+    useLazyQuery(FIND_PLAYER_ADVANCED);
+
+  const performSearchQuery = async (searchTerm, functionScore, operator) => {
     const players = await getPlayer({
-      variables: { Input: searchTerm },
+      // variables: { Input: searchTerm },
+      variables: {
+        Input: {
+          searchTerm: searchTerm,
+          functionScore: functionScore,
+          operator: operator,
+        },
+      },
     });
 
     console.log("PLAYERS: ", players);

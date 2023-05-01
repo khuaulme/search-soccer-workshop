@@ -39,8 +39,8 @@ export const FIND_PLAYER = gql`
 `;
 
 export const FIND_PLAYER_ADVANCED = gql`
-  query FindPlayer($Input: String) {
-    search(input: $Input) {
+  query FindPlayerAdvanced($Input: AdvancedSearchInput) {
+    searchAdvanced(input: $Input) {
       _id
       short_name
       long_name

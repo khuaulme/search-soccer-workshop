@@ -54,6 +54,7 @@ const Header = ({
             alt="search"
             onClick={() => {
               setFunctionScore(!functionScore);
+              setSubmitted(true);
               console.log("CLICK", functionScore);
             }}
             width="150px"
