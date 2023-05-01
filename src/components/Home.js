@@ -12,6 +12,7 @@ const Home = () => {
   const [players, setPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [operator, setOperator] = useState("text");
+  const [functionScore, setFunctionScore] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
@@ -45,6 +46,8 @@ const Home = () => {
         setSubmitted={setSubmitted}
         operator={operator}
         setOperator={setOperator}
+        functionScore={functionScore}
+        setFunctionScore={setFunctionScore}
       />
       <div className="container">
         <img

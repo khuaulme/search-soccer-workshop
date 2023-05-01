@@ -2,6 +2,8 @@ import React from "react";
 import MLOGO from "../images/PlayerLogo.png";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchIcon from "../images/Search.png";
+import RESET from "../images/RESET.png";
+import ScoreBtn from "../images/ScoreBtn.png";
 import Selector from "./Selector";
 import styled from "styled-components";
 
@@ -12,6 +14,8 @@ const Header = ({
   operator,
   setOperator,
   setSubmitted,
+  functionScore,
+  setFunctionScore,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +24,7 @@ const Header = ({
   return (
     <Wrapper>
       <Title>
-        <h4>Atlas Search Soccer</h4>
+        <h3>Atlas Search Soccer</h3>
       </Title>
 
       <Content>
@@ -44,6 +48,19 @@ const Header = ({
           onClick={handleSubmit}
           width="100px"
         />
+        <Button>
+          <img
+            src={ScoreBtn}
+            alt="search"
+            onClick={() => {
+              setFunctionScore(!functionScore);
+              console.log("CLICK", functionScore);
+            }}
+            width="150px"
+          />
+        </Button>
+
+        {/* <img src={RESET} alt="search" onClick={handleSubmit} width="80px" /> */}
       </Content>
       <hr></hr>
     </Wrapper>
@@ -66,6 +83,16 @@ export const Title = styled.div`
   max-width: 100%;
   margin: 40px 0px auto;
 `;
+export const Button = styled.button`
+  background: transparent;
+  /* border-color: #226030; */
+  border: 1px solid #226030;
+  box-shadow: 1px 1px 1px 1px slate;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  /* width: 10%; */
+`;
 
 export const Content = styled.div`
   display: flex;
@@ -77,12 +104,12 @@ export const Content = styled.div`
 `;
 
 export const InputForm = styled.div`
-  width: 60%;
+  width: 40%;
 `;
 export const SelectorDiv = styled.div`
-  width: 25%;
+  width: 16%;
 `;
 
 export const Logo = styled.img`
-  width: 15%;
+  width: 12%;
 `;
