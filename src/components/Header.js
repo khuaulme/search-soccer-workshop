@@ -2,9 +2,17 @@ import React from "react";
 import MLOGO from "../images/PlayerLogo.png";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchIcon from "../images/Search.png";
+import Selector from "./Selector";
 import styled from "styled-components";
 
-const Header = ({ searchTerm, setSearchTerm, setPlayers, setSubmitted }) => {
+const Header = ({
+  searchTerm,
+  setSearchTerm,
+  setPlayers,
+  operator,
+  setOperator,
+  setSubmitted,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
@@ -25,6 +33,10 @@ const Header = ({ searchTerm, setSearchTerm, setPlayers, setSubmitted }) => {
             setSubmitted={setSubmitted}
           />
         </InputForm>
+        <SelectorDiv>
+          {" "}
+          <Selector setOperator={setOperator} operator={operator} />
+        </SelectorDiv>
 
         <img
           src={SearchIcon}
@@ -60,12 +72,15 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-around;
   max-width: 100%;
-  padding: 0 20px;
+  padding: 0 8px;
   margin: 0 auto;
 `;
 
 export const InputForm = styled.div`
-  width: 70%;
+  width: 60%;
+`;
+export const SelectorDiv = styled.div`
+  width: 25%;
 `;
 
 export const Logo = styled.img`

@@ -11,6 +11,7 @@ import Thumb from "./Thumb/Thumb";
 const Home = () => {
   const [players, setPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [operator, setOperator] = useState("text");
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
@@ -42,6 +43,8 @@ const Home = () => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setSubmitted={setSubmitted}
+        operator={operator}
+        setOperator={setOperator}
       />
       <div className="container">
         <img
