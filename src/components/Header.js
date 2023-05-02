@@ -37,17 +37,19 @@ const Header = ({
             setSubmitted={setSubmitted}
           />
         </InputForm>
-        <SelectorDiv>
-          {" "}
-          <Selector setOperator={setOperator} operator={operator} />
-        </SelectorDiv>
-
         <img
           src={SearchIcon}
           alt="search"
           onClick={handleSubmit}
           width="100px"
         />
+      </Content>
+      <Content>
+        <SelectorDiv>
+          {" "}
+          <Selector setOperator={setOperator} operator={operator} />
+        </SelectorDiv>
+
         <Button>
           <img
             src={ScoreBtn}
@@ -105,10 +107,10 @@ export const Content = styled.div`
 `;
 
 export const InputForm = styled.div`
-  width: 40%;
+  width: 70%;
 `;
 export const SelectorDiv = styled.div`
-  width: 16%;
+  width: 30%;
 `;
 
 export const Logo = styled.img`

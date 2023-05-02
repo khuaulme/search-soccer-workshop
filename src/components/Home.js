@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
-import { FIND_PLAYER, FIND_PLAYER_ADVANCED } from "../graphql-operations";
+import { FIND_PLAYERS, FIND_PLAYERS_ADVANCED } from "../graphql-operations";
 
 import Header from "./Header";
 import Grid from "./Grid/Grid";
@@ -16,14 +16,27 @@ const Home = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
 
-  //  const [getPlayer, { loading, error, data }] = useLazyQuery(FIND_PLAYER);
+  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
 
-  const [getPlayer, { loading, error, data }] =
-    useLazyQuery(FIND_PLAYER_ADVANCED);
+  const [getPlayersAdvanced] = useLazyQuery(FIND_PLAYERS_ADVANCED);
 
-  const performSearchQuery = async (searchTerm, functionScore, operator) => {
-    const players = await getPlayer({
-      // variables: { Input: searchTerm },
+  // BASIC SEARCH QUERY FOR ONLY SEARCHBAR
+  const performSearchQuery = async (searchTerm) => {
+    const players = await getPlayers({
+      variables: { Input: searchTerm },
+    });
+    console.log("PLAYERS: ", players);
+    if (players.data && players.data.search) setPlayers(players.data.search);
+  };
+  /*-------------------END PERFORMSEARCHQUERY------------------------*/
+
+  // SEARCH QUERY FOR SEARCHBAR - SELECTOR - FUNCTION BTN
+  const performSearchQueryAdvanced = async (
+    searchTerm,
+    functionScore,
+    operator
+  ) => {
+    const players = await getPlayersAdvanced({
       variables: {
         Input: {
           searchTerm: searchTerm,
@@ -37,12 +50,16 @@ const Home = () => {
     if (players.data && players.data.searchAdvanced)
       setPlayers(players.data.searchAdvanced);
   };
+  /*-------------------END PERFORMSEARCHQUERYADVANCED------------------------*/
 
   useEffect(() => {
     if (!submitted) return;
 
     console.log("SUBMITTED");
+
+    // call only one of the following functions - comment out the other
     performSearchQuery(searchTerm, functionScore, operator);
+    //performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
