@@ -33,7 +33,7 @@ export const Content = styled.div`
     position: absolute;
     left: 0;
     margin: 8px 0;
-    padding: 0 0 0 60px;
+    padding: 0 0 0 20px;
     border: 0;
     width: 95%;
     background: transparent;
