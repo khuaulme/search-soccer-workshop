@@ -29,11 +29,11 @@ export const Content = styled.div`
   }
 
   input {
-    font-size: 30px;
+    font-size: 28px;
     position: absolute;
     left: 0;
     margin: 8px 0;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 16px;
     border: 0;
     width: 95%;
     background: transparent;
