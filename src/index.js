@@ -8,13 +8,19 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
+
 // Realm
 import * as Realm from "realm-web";
 import App from "./App";
 
+/*----------------------PASTE APP_ID FROM APP SERVICE APP----------------------------------------------*/
 export const APP_ID = "karenappservice-jwjzd";
 // Connect to your MongoDB Realm app
 const app = new Realm.App(APP_ID);
+
+/*----------------------PASTE GRAPHQL ENDPOINT----------------------------------------------*/
+export const GRAPHQL_ENDPOINT =
+  "https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql";
 
 // Gets a valid Realm user access token to authenticate requests
 async function getValidAccessToken() {
@@ -37,7 +43,7 @@ async function getValidAccessToken() {
 // Configure the ApolloClient to connect to your app's GraphQL endpoint
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: `https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql`,
+    uri: GRAPHQL_ENDPOINT,
     // We define a custom fetch handler for the Apollo client that lets us authenticate GraphQL requests.
     // The function intercepts every Apollo HTTP request and adds an Authorization header with a valid
     // access token before sending the request.

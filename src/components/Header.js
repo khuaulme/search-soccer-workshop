@@ -2,7 +2,6 @@ import React from "react";
 import MLOGO from "../images/PlayerLogo.png";
 import SearchBar from "./SearchBar/SearchBar";
 import SearchIcon from "../images/Search.png";
-import RESET from "../images/RESET.png";
 import ScoreBtn from "../images/ScoreBtn.png";
 import Selector from "./Selector";
 import styled from "styled-components";
@@ -41,7 +40,7 @@ const Header = ({
           src={SearchIcon}
           alt="search"
           onClick={handleSubmit}
-          width="100px"
+          width="80px"
         />
       </Content>
       <Content>

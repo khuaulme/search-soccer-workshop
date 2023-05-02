@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { APP_ID } from "../index";
+import { GRAPHQL_ENDPOINT } from "../index";
 
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
@@ -7,6 +9,7 @@ import { FIND_PLAYERS, FIND_PLAYERS_ADVANCED } from "../graphql-operations";
 import Header from "./Header";
 import Grid from "./Grid/Grid";
 import Thumb from "./Thumb/Thumb";
+import styled from "styled-components";
 
 const Home = () => {
   const [players, setPlayers] = useState([]);
@@ -14,7 +17,12 @@ const Home = () => {
   const [operator, setOperator] = useState("text");
   const [functionScore, setFunctionScore] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(false);
+  const [showNeedEndpointMessage, setShowNeedEndpointMessage] = useState(
+    GRAPHQL_ENDPOINT === ""
+  );
+  const [showNeedAppIDtMessage, setShowNeedAppIDtMessage] = useState(
+    APP_ID === ""
+  );
 
   const [getPlayers] = useLazyQuery(FIND_PLAYERS);
 
@@ -36,6 +44,8 @@ const Home = () => {
     functionScore,
     operator
   ) => {
+    console.log("FUNCTIONSCORE ", functionScore);
+    console.log("OPERATOR ", operator);
     const players = await getPlayersAdvanced({
       variables: {
         Input: {
@@ -56,10 +66,11 @@ const Home = () => {
     if (!submitted) return;
 
     console.log("SUBMITTED");
+    console.log(showNeedEndpointMessage);
 
     // call only one of the following functions - comment out the other
-    performSearchQuery(searchTerm, functionScore, operator);
-    //performSearchQueryAdvanced(searchTerm, functionScore, operator);
+    // performSearchQuery(searchTerm, functionScore, operator);
+    performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,15 +88,18 @@ const Home = () => {
         functionScore={functionScore}
         setFunctionScore={setFunctionScore}
       />
-      <div className="container">
-        <img
-          src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-          alt="stadium"
-          style={{ position: "absolute", height: "full", width: "100%" }}
-        />
-        {showNeedEndpointMessage ? (
-          <div className="needEndpoint">Build Endpoint Please 🥺</div>
-        ) : (
+      {showNeedEndpointMessage ? (
+        <Title>
+          <h2>INSERT GRAPHQL ENDPOINT LINE 22 IN INDEX.JS FILE PLEASE 🥺</h2>
+        </Title>
+      ) : (
+        <div className="container">
+          <img
+            src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            alt="stadium"
+            style={{ position: "absolute", height: "full", width: "100%" }}
+          />
+
           <Grid header={searchTerm ? null : "Player Search Results"}>
             {players.map((player) => (
               <Thumb
@@ -97,10 +111,19 @@ const Home = () => {
               ></Thumb>
             ))}
           </Grid>
-        )}
-      </div>{" "}
+        </div>
+      )}
     </>
   );
 };
 
 export default Home;
+
+export const Title = styled.div`
+  display: flex-col;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  max-width: 100%;
+  margin: 40px 0px auto;
+`;
