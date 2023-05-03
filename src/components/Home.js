@@ -66,10 +66,9 @@ const Home = () => {
     if (!submitted) return;
 
     console.log("SUBMITTED");
-    console.log(showNeedEndpointMessage);
 
     // call only one of the following functions - comment out the other
-    // performSearchQuery(searchTerm, functionScore, operator);
+    // performSearchQuery(searchTerm);
     performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
     setSubmitted(false);
@@ -88,6 +87,13 @@ const Home = () => {
         functionScore={functionScore}
         setFunctionScore={setFunctionScore}
       />
+      {showNeedEndpointMessage ? (
+        <Title>
+          <h2>INSERT APP_ID ON LINE 17 IN INDEX.JS FILE PLEASE 🥺</h2>
+        </Title>
+      ) : (
+        ""
+      )}
       {showNeedEndpointMessage ? (
         <Title>
           <h2>INSERT GRAPHQL ENDPOINT LINE 22 IN INDEX.JS FILE PLEASE 🥺</h2>

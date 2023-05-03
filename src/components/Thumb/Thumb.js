@@ -12,6 +12,8 @@ import {
 const Thumb = ({ player, image }) => {
   const score = player?.score.toString().slice(0, 5);
 
+  //const score = 100;
+
   return (
     <Wrapper>
       <Content>
