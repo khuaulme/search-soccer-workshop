@@ -30,10 +30,13 @@ const Home = () => {
   );
   const [calledGQL, setCalledGQL] = useState("BASIC");
 
+  /********************IMPORTING GRAPHQL OPERATIONS *****************************/
+
   const [getPlayersBasic] = useLazyQuery(FIND_PLAYERS_BASIC);
   const [getPlayersSearch] = useLazyQuery(FIND_PLAYERS_SEARCH);
-
   const [getRelatedPlayers] = useLazyQuery(FIND_RELATED_DATA);
+
+  /********************IMPORTING GRAPHQL OPERATIONS *****************************/
 
   const [getPlayersAdvanced] = useLazyQuery(FIND_PLAYERS_ADVANCED);
 
@@ -107,12 +110,9 @@ const Home = () => {
 
     // call only one of the following functions - comment out the other
 
-    // performBasicQuery(searchTerm);
-    performSearchQuery(searchTerm);
-
-    // performRelatedQuery(searchTerm);
-
-    //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
+    performBasicQuery(searchTerm);
+    // performSearchQuery(searchTerm);
+    //performRelatedQuery(searchTerm);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -178,3 +178,5 @@ export const Title = styled.div`
   max-width: 100%;
   margin: 40px 0px auto;
 `;
+
+//  performSearchQueryAdvanced(searchTerm, functionScore, operator);

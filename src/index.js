@@ -21,8 +21,8 @@ const app = new Realm.App(APP_ID);
 
 /*----------------------PASTE GRAPHQL ENDPOINT----------------------------------------------*/
 export const GRAPHQL_ENDPOINT = "";
-//"https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql";
 
+//"https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql";
 // Gets a valid Realm user access token to authenticate requests
 async function getValidAccessToken() {
   // Guarantee that there's a logged in user with a valid access token
