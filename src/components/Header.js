@@ -22,10 +22,6 @@ const Header = ({
   };
   return (
     <Wrapper>
-      <Title>
-        <h3>Atlas Search Soccer</h3>
-      </Title>
-
       <Content>
         <Logo src={MLOGO} alt="mdb-logo" />
         <InputForm>
@@ -43,27 +39,7 @@ const Header = ({
           width="80px"
         />
       </Content>
-      <Content>
-        <SelectorDiv>
-          {" "}
-          <Selector setOperator={setOperator} operator={operator} />
-        </SelectorDiv>
 
-        <Button>
-          <img
-            src={ScoreBtn}
-            alt="search"
-            onClick={() => {
-              setFunctionScore(!functionScore);
-              setSubmitted(true);
-              console.log("CLICK", functionScore);
-            }}
-            width="150px"
-          />
-        </Button>
-
-        {/* <img src={RESET} alt="search" onClick={handleSubmit} width="80px" /> */}
-      </Content>
       <hr></hr>
     </Wrapper>
   );
@@ -115,3 +91,11 @@ export const SelectorDiv = styled.div`
 export const Logo = styled.img`
   width: 12%;
 `;
+
+/*
+
+
+
+
+
+*/

@@ -14,16 +14,18 @@ import * as Realm from "realm-web";
 import App from "./App";
 
 /*----------------------PASTE APP_ID FROM APP SERVICE APP----------------------------------------------*/
-export const APP_ID = "kopensourcenorth-edfti";
+export const APP_ID = "karenappservice-jwjzd";
 
-// "karenappservice-jwjzd";
+//"kopensourcenorth-edfti";
+
+//
 // Connect to your MongoDB Realm app
 const app = new Realm.App(APP_ID);
 
 /*----------------------PASTE GRAPHQL ENDPOINT----------------------------------------------*/
 export const GRAPHQL_ENDPOINT =
-  "https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/opensourcenorth-edfti/graphql";
-// "https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql";
+  //"https://us-east-1.aws.realm.mongodb.com/api/client/v2.0/app/opensourcenorth-edfti/graphql";
+  "https://europe-west1.gcp.realm.mongodb.com/api/client/v2.0/app/karenappservice-jwjzd/graphql";
 
 // Gets a valid Realm user access token to authenticate requests
 async function getValidAccessToken() {

@@ -4,7 +4,11 @@ import { GRAPHQL_ENDPOINT } from "../index";
 
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
-import { FIND_PLAYERS, FIND_PLAYERS_ADVANCED } from "../graphql-operations";
+import {
+  FIND_PLAYERS,
+  FIND_PLAYERS_ADVANCED,
+  FIND_RELATED_DATA,
+} from "../graphql-operations";
 
 import Header from "./Header";
 import Grid from "./Grid/Grid";
@@ -24,7 +28,9 @@ const Home = () => {
     APP_ID === ""
   );
 
-  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
+  //  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
+
+  const [getPlayers] = useLazyQuery(FIND_RELATED_DATA);
 
   const [getPlayersAdvanced] = useLazyQuery(FIND_PLAYERS_ADVANCED);
 
@@ -69,6 +75,7 @@ const Home = () => {
 
     // call only one of the following functions - comment out the other
     performSearchQuery(searchTerm);
+
     //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
     setSubmitted(false);

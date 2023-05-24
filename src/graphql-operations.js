@@ -38,6 +38,31 @@ export const FIND_PLAYERS = gql`
   }
 `;
 
+export const FIND_RELATED_DATA = gql`
+  query FindPlayer($Input: String) {
+    search(input: $Input) {
+      _id
+      short_name
+      long_name
+      overall
+      club_logo_url
+      club_name
+      club_jersey_number
+      player_face_url
+      nation_flag_url
+      nation_jersey_number
+      player_positions
+      nationality_name {
+        country
+        ChampionshipCount
+        FinalsCount
+        QuartersCount
+        SemisCount
+      }
+    }
+  }
+`;
+
 export const FIND_PLAYERS_backup = gql`
   query FindPlayer($Input: String) {
     search(input: $Input) {

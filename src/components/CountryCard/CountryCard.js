@@ -3,7 +3,7 @@ import Trophy from "../../images/cup.png";
 
 import { Wrapper, Content, Image, TraitLine } from "./CountryCard.styles";
 
-const CountryCard = ({ nation }) => {
+const CountryCard = ({ nation, stats }) => {
   // console.log("STATS", stats);
   console.log("NATION: ", nation);
   return (
@@ -12,10 +12,10 @@ const CountryCard = ({ nation }) => {
         <Image src={Trophy} alt="WorldCup"></Image>
         <div>
           <h2>{nation}</h2>
-          <h3>8 Championships</h3>
-          <h3>8 Finals</h3>
-          <h3>8 Semifinals</h3>
-          <h3>8 Quarterfinals</h3>
+          <h3>{stats.ChampionshipCount} Championships</h3>
+          <h3>{stats.FinalsCount} Finals</h3>
+          <h3>{stats.SemisCount} Semifinals</h3>
+          <h3>{stats.QuartersCount} Quarterfinals</h3>
         </div>
       </Content>
     </Wrapper>
