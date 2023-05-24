@@ -41,9 +41,13 @@ const Home = () => {
   const performBasicQuery = async (searchTerm) => {
     console.log("PERFORMING BASIC");
 
-    const players = await getPlayersBasic({ variables: { Input: searchTerm } });
+    const players = await getPlayersBasic({
+      variables: { Input: searchTerm },
+    });
+    // setPlayers(players.data.players);
+    console.log("PLAYERSDATA: ", players.data);
     setPlayers(players.data.players);
-    console.log("PLAYERSDATA: ", players);
+    console.log(typeof players);
   };
   //   const players = await getPlayersBasic({ variables: { Input: searchTerm } });
   /*-------------------END BASIC------------------------*/
@@ -104,9 +108,9 @@ const Home = () => {
     // call only one of the following functions - comment out the other
 
     // performBasicQuery(searchTerm);
-    //performSearchQuery(searchTerm);
+    performSearchQuery(searchTerm);
 
-    performRelatedQuery(searchTerm);
+    // performRelatedQuery(searchTerm);
 
     //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
@@ -144,19 +148,20 @@ const Home = () => {
             alt="stadium"
             style={{ position: "absolute", height: "full", width: "100%" }}
           />
-
-          <Grid header={searchTerm ? null : "Player Search Results"}>
-            {players.map((player) => (
-              <Thumb
-                key={player._id}
-                player={player}
-                clickable
-                playerID={player._id}
-                image={player.player_face_url ? player.player_face_url : ""}
-                calledGQL={calledGQL}
-              ></Thumb>
-            ))}
-          </Grid>
+          {Array.isArray(players) && (
+            <Grid header={searchTerm ? null : "Player Search Results"}>
+              {players.map((player) => (
+                <Thumb
+                  key={player._id}
+                  player={player}
+                  clickable
+                  playerID={player._id}
+                  image={player.player_face_url ? player.player_face_url : ""}
+                  calledGQL={calledGQL}
+                ></Thumb>
+              ))}
+            </Grid>
+          )}
         </div>
       )}
     </>

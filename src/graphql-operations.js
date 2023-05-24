@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 export const FIND_PLAYERS_BASIC = gql`
   query ($Input: String) {
     players(
-      query: { nationality_name: $Input }
+      query: { nationality_name: { country: $Input } }
       limit: 3
       sortBy: OVERALL_DESC
     ) {
@@ -18,7 +18,6 @@ export const FIND_PLAYERS_BASIC = gql`
       nation_flag_url
       nation_jersey_number
       player_positions
-      nationality_name
     }
   }
 `;
@@ -44,7 +43,6 @@ export const FIND_PLAYERS_SEARCH = gql`
       nation_flag_url
       nation_jersey_number
       player_positions
-      nationality_name
     }
   }
 `;
