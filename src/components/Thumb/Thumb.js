@@ -10,10 +10,10 @@ import {
   TraitImage,
 } from "./Thumb.styles";
 
-const Thumb = ({ player, image }) => {
+const Thumb = ({ player, image, calledGQL }) => {
   // const score = player?.score.toString().slice(0, 5);
   //const score = 100;
-
+  let nation = "UNKNOWN";
   let stats = {
     country: "UNKNOWN",
     ChampionshipCount: 0,
@@ -21,10 +21,12 @@ const Thumb = ({ player, image }) => {
     QuartersCount: 0,
     SemisCount: 0,
   };
-  let nation = "UNKNOWN";
-  if (player.nationality_name !== null) {
-    stats = player.nationality_name;
-    nation = player.nationality_name.country;
+
+  if (calledGQL === "RELATED") {
+    if (player.nationality_name !== null) {
+      stats = player.nationality_name;
+      nation = player.nationality_name.country;
+    }
   }
 
   return (
@@ -34,7 +36,11 @@ const Thumb = ({ player, image }) => {
         <h2>{player.long_name}</h2>
         <TraitLine>
           <TraitImage src={player?.nation_flag_url} alt="flag"></TraitImage>
-          <h4>{nation}</h4>
+          {calledGQL === "RELATED" ? (
+            <h4>{nation}</h4>
+          ) : (
+            <h4>{player.nationality_name}</h4>
+          )}
           <h4>{player.nation_jersey_number}</h4>
         </TraitLine>
         <Image src={image} alt="player-thumb" />
@@ -47,7 +53,9 @@ const Thumb = ({ player, image }) => {
 
         <hr></hr>
         <h1>Overall: {player?.overall}</h1>
-        <CountryCard nation={nation} stats={stats} />
+        {calledGQL === "RELATED" ? (
+          <CountryCard nation={nation} stats={stats} />
+        ) : null}
       </Content>
     </Wrapper>
   );

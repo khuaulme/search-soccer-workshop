@@ -27,16 +27,28 @@ const Home = () => {
   const [showNeedAppIDtMessage, setShowNeedAppIDtMessage] = useState(
     APP_ID === ""
   );
+  const [calledGQL, setCalledGQL] = useState("BASIC");
 
-  //  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
+  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
 
-  const [getPlayers] = useLazyQuery(FIND_RELATED_DATA);
+  const [getRelatedPlayers] = useLazyQuery(FIND_RELATED_DATA);
 
   const [getPlayersAdvanced] = useLazyQuery(FIND_PLAYERS_ADVANCED);
 
   // BASIC SEARCH QUERY FOR ONLY SEARCHBAR
   const performSearchQuery = async (searchTerm) => {
     const players = await getPlayers({
+      variables: { Input: searchTerm },
+    });
+    console.log("PLAYERS: ", players);
+    if (players.data && players.data.search) setPlayers(players.data.search);
+  };
+  /*-------------------END PERFORMSEARCHQUERY------------------------*/
+
+  // BASIC SEARCH QUERY FOR ONLY SEARCHBAR
+  const performRelatedQuery = async (searchTerm) => {
+    setCalledGQL("RELATED");
+    const players = await getRelatedPlayers({
       variables: { Input: searchTerm },
     });
     console.log("PLAYERS: ", players);
@@ -52,6 +64,7 @@ const Home = () => {
   ) => {
     console.log("FUNCTIONSCORE ", functionScore);
     console.log("OPERATOR ", operator);
+    setCalledGQL("ADVANCED");
     const players = await getPlayersAdvanced({
       variables: {
         Input: {
@@ -75,6 +88,8 @@ const Home = () => {
 
     // call only one of the following functions - comment out the other
     performSearchQuery(searchTerm);
+
+    //performRelatedQuery(searchTerm);
 
     //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
@@ -121,6 +136,7 @@ const Home = () => {
                 clickable
                 playerID={player._id}
                 image={player.player_face_url ? player.player_face_url : ""}
+                calledGQL={calledGQL}
               ></Thumb>
             ))}
           </Grid>
