@@ -1,9 +1,9 @@
 import gql from "graphql-tag";
 
 export const FIND_PLAYERS_BASIC = gql`
-  query {
+  query ($Input: String) {
     players(
-      query: { nationality_name: "Germany" }
+      query: { nationality_name: $Input }
       limit: 3
       sortBy: OVERALL_DESC
     ) {

@@ -41,10 +41,9 @@ const Home = () => {
   const performBasicQuery = async (searchTerm) => {
     console.log("PERFORMING BASIC");
 
-    const players = await getPlayersBasic(searchTerm);
+    const players = await getPlayersBasic({ variables: { Input: searchTerm } });
     setPlayers(players.data.players);
-
-    console.log("PLAYERSDATA: ", players.data);
+    console.log("PLAYERSDATA: ", players);
   };
   //   const players = await getPlayersBasic({ variables: { Input: searchTerm } });
   /*-------------------END BASIC------------------------*/
@@ -104,10 +103,10 @@ const Home = () => {
 
     // call only one of the following functions - comment out the other
 
-    performBasicQuery(searchTerm);
-    // performSearchQuery(searchTerm);
+    // performBasicQuery(searchTerm);
+    //performSearchQuery(searchTerm);
 
-    //performRelatedQuery(searchTerm);
+    performRelatedQuery(searchTerm);
 
     //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
 

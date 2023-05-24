@@ -33,7 +33,7 @@ export const Content = styled.div`
 
   h2 {
     font-weight: 400;
-    color: red;
+    color: #ff0000;
   }
   h3 {
     font-weight: 400;
