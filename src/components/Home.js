@@ -5,7 +5,8 @@ import { GRAPHQL_ENDPOINT } from "../index";
 // import whichever Apollo hooks you're using
 import { useLazyQuery } from "@apollo/client";
 import {
-  FIND_PLAYERS,
+  FIND_PLAYERS_BASIC,
+  FIND_PLAYERS_SEARCH,
   FIND_PLAYERS_ADVANCED,
   FIND_RELATED_DATA,
 } from "../graphql-operations";
@@ -29,15 +30,30 @@ const Home = () => {
   );
   const [calledGQL, setCalledGQL] = useState("BASIC");
 
-  const [getPlayers] = useLazyQuery(FIND_PLAYERS);
+  const [getPlayersBasic] = useLazyQuery(FIND_PLAYERS_BASIC);
+  const [getPlayersSearch] = useLazyQuery(FIND_PLAYERS_SEARCH);
 
   const [getRelatedPlayers] = useLazyQuery(FIND_RELATED_DATA);
 
   const [getPlayersAdvanced] = useLazyQuery(FIND_PLAYERS_ADVANCED);
 
+  //  BASIC QUERY
+  const performBasicQuery = async (searchTerm) => {
+    console.log("PERFORMING BASIC");
+
+    const players = await getPlayersBasic(searchTerm);
+    setPlayers(players.data.players);
+
+    console.log("PLAYERSDATA: ", players.data);
+  };
+  //   const players = await getPlayersBasic({ variables: { Input: searchTerm } });
+  /*-------------------END BASIC------------------------*/
+
   // BASIC SEARCH QUERY FOR ONLY SEARCHBAR
   const performSearchQuery = async (searchTerm) => {
-    const players = await getPlayers({
+    console.log("PERFORMING SEARCH");
+    setCalledGQL("SEARCH");
+    const players = await getPlayersSearch({
       variables: { Input: searchTerm },
     });
     console.log("PLAYERS: ", players);
@@ -87,7 +103,9 @@ const Home = () => {
     console.log("SUBMITTED");
 
     // call only one of the following functions - comment out the other
-    performSearchQuery(searchTerm);
+
+    performBasicQuery(searchTerm);
+    // performSearchQuery(searchTerm);
 
     //performRelatedQuery(searchTerm);
 
