@@ -33,25 +33,6 @@ export const FIND_PLAYERS = gql`
       nation_flag_url
       nation_jersey_number
       player_positions
-      nationality_name
-    }
-  }
-`;
-
-export const FIND_PLAYERS_backup = gql`
-  query FindPlayer($Input: String) {
-    search(input: $Input) {
-      _id
-      short_name
-      long_name
-      overall
-      club_logo_url
-      club_name
-      club_jersey_number
-      player_face_url
-      nation_flag_url
-      nation_jersey_number
-      player_positions
       score
     }
   }

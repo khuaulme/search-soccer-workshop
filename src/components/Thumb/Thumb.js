@@ -1,4 +1,5 @@
 import React from "react";
+import CountryCard from "../CountryCard/CountryCard";
 
 import {
   Wrapper,
@@ -10,14 +11,14 @@ import {
 } from "./Thumb.styles";
 
 const Thumb = ({ player, image }) => {
-  const score = player?.score.toString().slice(0, 5);
+  // const score = player?.score.toString().slice(0, 5);
 
   //const score = 100;
 
   return (
     <Wrapper>
       <Content>
-        <ScoreBadge>Score: {score}</ScoreBadge>
+        {/* <ScoreBadge>Score: {score}</ScoreBadge> */}
         <h2>{player.long_name}</h2>
         <TraitLine>
           <TraitImage src={player?.nation_flag_url} alt="flag"></TraitImage>
@@ -34,6 +35,7 @@ const Thumb = ({ player, image }) => {
 
         <hr></hr>
         <h1>Overall: {player?.overall}</h1>
+        <CountryCard nation={player.nationality_name} />
       </Content>
     </Wrapper>
   );

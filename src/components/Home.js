@@ -68,8 +68,8 @@ const Home = () => {
     console.log("SUBMITTED");
 
     // call only one of the following functions - comment out the other
-    // performSearchQuery(searchTerm);
-    performSearchQueryAdvanced(searchTerm, functionScore, operator);
+    performSearchQuery(searchTerm);
+    //  performSearchQueryAdvanced(searchTerm, functionScore, operator);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,7 +87,7 @@ const Home = () => {
         functionScore={functionScore}
         setFunctionScore={setFunctionScore}
       />
-      {showNeedEndpointMessage ? (
+      {showNeedAppIDtMessage ? (
         <Title>
           <h2>INSERT APP_ID ON LINE 17 IN INDEX.JS FILE PLEASE 🥺</h2>
         </Title>
