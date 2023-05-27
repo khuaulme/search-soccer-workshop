@@ -73,7 +73,7 @@ const Home = () => {
     const players = await getRelatedPlayers({
       variables: { Input: searchTerm },
     });
-    console.log("PLAYERS: ", players);
+    console.log("PLAYERS: ", players.data);
     if (players.data && players.data.search) setPlayers(players.data.search);
   };
   /*-------------------END PERFORMSEARCHQUERY------------------------*/
@@ -110,9 +110,9 @@ const Home = () => {
 
     // call only one of the following functions - comment out the other
 
-    performBasicQuery(searchTerm);
-    // performSearchQuery(searchTerm);
-    // performRelatedQuery(searchTerm);
+    // performBasicQuery(searchTerm);
+    //performSearchQuery(searchTerm);
+    performRelatedQuery(searchTerm);
 
     setSubmitted(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps

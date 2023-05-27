@@ -72,6 +72,14 @@ export const FIND_RELATED_DATA = gql`
   }
 `;
 
+//  nationality_name {
+//         country
+//         ChampionshipCount
+//         FinalsCount
+//         QuartersCount
+//         SemisCount
+//       }
+
 export const FIND_PLAYERS_backup = gql`
   query FindPlayer($Input: String) {
     search(input: $Input) {
